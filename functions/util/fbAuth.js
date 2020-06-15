@@ -12,16 +12,8 @@ module.exports = (req, res, next) => {
     admin.auth().verifyIdToken(idToken)
         .then(decodedToken => {
             req.user = decodedToken;
-            // return db
-            //     .collection('users')
-            //     .doc(req.user.email)
-            //     .get();
             return next();
         })
-        // .then(data => {
-        //     req.user.uid = data.docs[0].data().uid;
-        //     return next();
-        // })
         .catch(err => {
             res.status(403).json(err);
         })

@@ -68,8 +68,8 @@ exports.login = (req, res) => {
             .then((token) => {
                 return res.status(200).json({token: token});
             })
+        })
+        .catch(err => {
+            return res.status(500).json({error: err});
         });
-        // .catch(err => {
-        //     return res.status(500).json({error: err});
-        // })
 }
