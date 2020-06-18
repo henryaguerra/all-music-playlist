@@ -18,7 +18,7 @@ app.post('/signup', signup);
 app.post('/login', login);
 
 // Playlist routes
-// TODO change getPlaylists to return playlists and songs after finishing addPlaylists request
+// TODO: change getPlaylists to return playlists and songs after finishing addPlaylists request
 app.get('/getPlaylists', FBAuth, getPlaylists);
 app.post('/addPlaylist', FBAuth, addPlaylist);
 app.post('/addToPlaylist', FBAuth, addToPlaylist);
