@@ -27,7 +27,9 @@ exports.signup = (req, res) => {
       });
 
       data.user.getIdToken().then((token) => {
-        return res.status(201).json({ token: token });
+        return res
+          .status(201)
+          .json({ token: token, refreshToken: data.user.refreshToken });
       });
     })
 
@@ -71,7 +73,11 @@ exports.login = (req, res) => {
 
     .then((user) => {
       user.user.getIdToken().then((token) => {
-        return res.status(200).json({ token: token });
+        const tokens = {
+          token: token,
+          refreshToken: user.user.refreshToken,
+        };
+        return res.status(200).json(tokens);
       });
     })
     .catch((err) => {
