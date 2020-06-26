@@ -9,4 +9,5 @@ export const SET_ERRORS = "SET_ERRORS";
 export const LOADING_UI = "LOADING_UI";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
 
-// Data reducer types
+// Spotify Routes
+export const SET_SPOTIFY_AUTHENTICATED = "SET_SPOTIFY_AUTHENTICATED";

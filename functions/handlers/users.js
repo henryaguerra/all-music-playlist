@@ -1,4 +1,4 @@
-const { db } = require("../util/admin");
+const { db, admin } = require("../util/admin");
 
 const config = require("../util/config");
 const firebase = require("firebase");
@@ -21,15 +21,17 @@ exports.signup = (req, res) => {
     .auth()
     .createUserWithEmailAndPassword(newUser.email, newUser.password)
     .then((data) => {
-      db.collection("users").doc(newUser.email).set({
-        uid: data.user.uid,
+      // Set doc name as uid and initialize playlist count to 0
+      db.collection("users").doc(data.user.uid).set({
         playlist_count: 0,
       });
 
       data.user.getIdToken().then((token) => {
-        return res
-          .status(201)
-          .json({ token: token, refreshToken: data.user.refreshToken });
+        return res.status(201).json({
+          token: token,
+          refreshToken: data.user.refreshToken,
+          uid: data.user.uid,
+        });
       });
     })
 
@@ -73,11 +75,12 @@ exports.login = (req, res) => {
 
     .then((user) => {
       user.user.getIdToken().then((token) => {
-        const tokens = {
+        const data = {
           token: token,
           refreshToken: user.user.refreshToken,
+          uid: user.user.uid,
         };
-        return res.status(200).json(tokens);
+        return res.status(200).json(data);
       });
     })
     .catch((err) => {

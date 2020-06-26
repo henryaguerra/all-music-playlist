@@ -1,6 +1,7 @@
 import { SET_USER, SET_AUTHENTICATED, SET_UNAUTHORIZED } from "../types";
 
 const initialState = {
+  spotify_authenticated: false,
   authenticated: false,
   credentials: {},
 };

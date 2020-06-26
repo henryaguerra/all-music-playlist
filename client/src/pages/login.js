@@ -67,27 +67,28 @@ class login extends Component {
               label="Email"
               type="email"
               name="email"
-              variant="outlined"
-              color="primary"
+              variant="filled"
               className={classes.textField}
               helperText={errors.email}
               error={errors.email ? true : false}
               value={this.state.email}
               onChange={this.handleChange}
               fullWidth
+              color="secondary"
             />
             <TextField
               id="pass"
               label="Password"
               type="password"
               name="pass"
-              variant="outlined"
+              variant="filled"
               helperText={errors.password}
               error={errors.password ? true : false}
               className={classes.textField}
               value={this.state.pass}
               onChange={this.handleChange}
               fullWidth
+              color="secondary"
             />
             <Button
               type="submit"

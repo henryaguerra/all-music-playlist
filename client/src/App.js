@@ -3,10 +3,12 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 import jwtDecode from "jwt-decode";
 import axios from "axios";
+
 // pages
 import home from "./pages/home";
 import login from "./pages/login";
 import signup from "./pages/signup";
+import spotifycallback from "./pages/spotifycallback";
 
 // components
 import Navbar from "./components/Navbar";
@@ -48,6 +50,8 @@ class App extends Component {
             <div className="container">
               <Switch>
                 <Route exact path="/" component={home} />
+                <Route path="/spotify-callback" component={spotifycallback} />
+                <Route path="/spotify-callback" component={home} />
                 <AuthRoute exact path="/login" component={login} />
                 <AuthRoute exact path="/signup" component={signup} />
               </Switch>

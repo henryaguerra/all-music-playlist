@@ -35,11 +35,19 @@ class signup extends Component {
       password: this.state.pass,
       confirmPassword: this.state.confirmPass,
     };
-    console.log(userData.email);
-    console.log(userData.password);
-    console.log(userData.confirmPassword);
 
-    this.props.signupUser(userData, this.props.history);
+    if (this.state.pass !== this.state.confirmPass) {
+      var errors = {};
+      errors.password = "passwords do not match";
+      this.setState({ errors: errors });
+      console.log("passwords did not match");
+    } else {
+      console.log(userData.email);
+      console.log(userData.password);
+      console.log(userData.confirmPassword);
+
+      this.props.signupUser(userData, this.props.history);
+    }
   };
 
   handleChange = (event) => {
@@ -110,7 +118,7 @@ class signup extends Component {
               className={classes.button}
               disabled={loading}
             >
-              Login
+              Signup
               {loading && (
                 <CircularProgress className={classes.progress} size={30} />
               )}
