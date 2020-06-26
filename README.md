@@ -1,5 +1,7 @@
-Code to a website I am making to have a playlist of apple, spotify, and youtube songs.
+# All Music Playlists (WIP)
 
-Only done some backend so far.
+Combine Youtube, Spotify, and Apple Music playlists together.
 
-Implemented with Firebase Cloud Firestore.
+Created with React and Firebase Cloud Functions.
+
+(Outgoing API calls required a paid firebase plan so project is on hiatus for now)
